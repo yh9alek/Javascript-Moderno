@@ -48,9 +48,22 @@ const valorCarta = (carta) => {
 // Referencias HTML
 const btnPedir = document.querySelector('#btnPedir');
 const btnDetener = document.querySelector('#btnDetener');
+const btnNuevo = document.querySelector('#btnNuevo');
+btnNuevo.disabled = true;
 const smalls = document.querySelectorAll('.col > h1:first-of-type > small');
 const divCartasJugador = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadora-cartas');
+
+const reiniciar = () => {
+    deck = [];
+    smalls.forEach(small => small.textContent = 0);
+    [puntosJugador, puntosComputadora] = [0, 0];
+    divCartasJugador.innerText = '';
+    divCartasComputadora.innerText = '';
+    btnPedir.disabled = false;
+    btnDetener.disabled = false;
+    btnNuevo.disabled = true;
+}
 
 // Turno de la computadora
 const turnoComputadora = (puntosMinimos) => {
@@ -66,6 +79,20 @@ const turnoComputadora = (puntosMinimos) => {
         divCartasComputadora.append(imgCarta);
         if(puntosMinimos > 21) break;
     } while(puntosComputadora < puntosMinimos && puntosMinimos <= 21);
+    setTimeout(() => {
+        if(puntosMinimos > 21) {
+            alert('Perdiste');
+        }else if (puntosComputadora > 21) {
+            alert('Ganaste');
+        }
+        else if(puntosMinimos > puntosComputadora) {
+            alert('Ganaste');
+        }
+        else {
+            alert('Perdiste');
+        }
+        btnNuevo.disabled = false;
+    }, 50);
 }
 
 // Eventos
@@ -81,15 +108,10 @@ btnPedir.addEventListener('click', () => {
     divCartasJugador.append(imgCarta);
 
     // Lógica de victoria - derrota
-    if(puntosJugador > 21) {
-        console.warn('Lo siento mucho, perdiste');
+    if(puntosJugador >= 21) {
         btnPedir.disabled = true;
         btnDetener.disabled = true;
         turnoComputadora(puntosJugador);
-    } else if(puntosJugador === 21) {
-        console.warn('Ganaste');
-        btnPedir.disabled = true;
-        btnDetener.disabled = true;
     }
 });
 
@@ -97,4 +119,9 @@ btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
     btnDetener.disabled = true;
     turnoComputadora(puntosJugador);
+});
+
+btnNuevo.addEventListener('click', () => {
+    reiniciar();
+    deck = crearDeck();
 });
