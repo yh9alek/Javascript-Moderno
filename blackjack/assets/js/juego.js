@@ -48,10 +48,26 @@ const valorCarta = (carta) => {
 // Referencias HTML
 const btnPedir = document.querySelector('#btnPedir');
 const smalls = document.querySelectorAll('.col > h1:first-of-type > small');
+const divCartasJugador = document.querySelector('#jugador-cartas');
 
 // Eventos
 btnPedir.addEventListener('click', () => {
     const carta = pedirCarta();
     puntosJugador += valorCarta(carta);
     smalls[0].textContent = puntosJugador;
+
+    //Crear y configurar la carta en memoria para asignar en el DOM
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.classList.add('carta');
+    divCartasJugador.append(imgCarta);
+
+    // Lógica de victoria - derrota
+    if(puntosJugador > 21) {
+        console.warn('Lo siento mucho, perdiste');
+        btnPedir.disabled = true;
+    } else if(puntosJugador === 21) {
+        console.warn('Ganaste');
+        btnPedir.disabled = true;
+    }
 });
