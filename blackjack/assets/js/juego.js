@@ -34,3 +34,10 @@ const pedirCarta = () => {
     if(deck.length === 0) throw 'No hay cartas en el deck.';
     return deck.pop();
 }
+
+// Esta función obtiene el valor de la carta enviada
+const valorCarta = (carta) => {
+    const digito = carta.substring(0, carta.length - 1);
+    return isNaN(digito) ? 
+          digito === 'A' ? 11 : 10 : digito * 1;
+}
