@@ -1,4 +1,4 @@
-(() => {
+const miModulo = (() => {
     'use strict'
 
     let deck         = [];
@@ -14,6 +14,7 @@
 
     btnPedir.disabled = true;
     btnDetener.disabled = true;
+    btnNuevo.disabled = true;
 
     const divCartasJugadores = document.querySelectorAll('.divCartas'),
           smalls = document.querySelectorAll('.col > h1:first-of-type > small');
@@ -81,6 +82,25 @@
         divCartasJugadores[turno].append(imgCarta);
     }
 
+    const determinarGanador = () => {
+        const [puntosMinimos, puntosComputadora] = puntosJugadores;
+
+        setTimeout(() => {
+            if(puntosMinimos > 21) {
+                alert('Perdiste');
+            }else if (puntosComputadora > 21) {
+                alert('Ganaste');
+            }
+            else if(puntosMinimos > puntosComputadora) {
+                alert('Ganaste');
+            }
+            else {
+                alert('Perdiste');
+            }
+            btnNuevo.disabled = false;
+        }, 50);
+    }
+
     // Turno de la computadora
     const turnoComputadora = (puntosMinimos) => {
         do {
@@ -92,20 +112,7 @@
             if(puntosMinimos > 21) break;
         } while(puntosJugadores[puntosJugadores.length -1] < puntosMinimos && puntosMinimos <= 21);
         // El setTimeout sirve para que se renderizen primero las cartas antes de ganar o perder
-        setTimeout(() => {
-            if(puntosMinimos > 21) {
-                alert('Perdiste');
-            }else if (puntosJugadores[puntosJugadores.length -1] > 21) {
-                alert('Ganaste');
-            }
-            else if(puntosMinimos > puntosJugadores[puntosJugadores.length -1]) {
-                alert('Ganaste');
-            }
-            else {
-                alert('Perdiste');
-            }
-            btnNuevo.disabled = false;
-        }, 50);
+        determinarGanador();
     }
 
     // Eventos
@@ -133,4 +140,7 @@
     btnNuevo.addEventListener('click', () => {
         reiniciar();
     });
+    return {
+        nuevoJuego: reiniciar
+    };
 })();
