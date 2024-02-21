@@ -1,7 +1,5 @@
 import _ from 'underscore';
-import { crearDeck as crearNuevoDeck} from './usecases/crear-deck.js';
-import { pedirCarta } from './usecases/pedir-carta.js';
-import { valorCarta } from './usecases/valor-carta.js';
+import { crearDeck as crearNuevoDeck, pedirCarta, valorCarta } from './usecases';
 
 let deck         = [];
 const tipos      = ['C', 'D', 'H', 'S'],
@@ -43,7 +41,7 @@ const reiniciar = () => {
 }
 
 const acumularPuntos = (carta, turno) => {
-    puntosJugadores[turno] += valorCarta();
+    puntosJugadores[turno] += valorCarta(carta);
     smalls[turno].textContent = puntosJugadores[turno];
 }
 
