@@ -2,7 +2,7 @@ import { shuffle } from "underscore";
 
 // Esta función crea un nuevo deck
 export const crearDeck = (tipos, especiales) => {
-    deck = [];
+    let deck = [];
 
     for(let i = 2; i <= 10; i++) {
         for(let tipo of tipos) {

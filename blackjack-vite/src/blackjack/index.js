@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { crearDeck } from './usecases/crear-deck.js';
+import { crearDeck as crearNuevoDeck} from './usecases/crear-deck.js';
 
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
@@ -32,7 +32,7 @@ const inicializarJuego = (numJugadores = 2) => {
     }
 }
 
-crearDeck();
+deck = crearNuevoDeck(tipos, especiales);
 
 // Esta función me permite tomar una carta
 const pedirCarta = () => {
