@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import { crearDeck as crearNuevoDeck} from './usecases/crear-deck.js';
+import { pedirCarta } from './usecases/pedir-carta.js';
+import { valorCarta } from './usecases/valor-carta.js';
 
 let deck         = [];
 const tipos      = ['C', 'D', 'H', 'S'],
@@ -30,19 +32,6 @@ const inicializarJuego = (numJugadores = 2) => {
 
 deck = crearNuevoDeck(tipos, especiales);
 
-// Esta función me permite tomar una carta
-const pedirCarta = () => {
-    if(!deck.length) throw 'No hay cartas en el deck.';
-    return deck.pop();
-}
-
-// Esta función obtiene el valor de la carta enviada
-const valorCarta = (carta) => {
-    const digito = carta.substring(0, carta.length - 1);
-    return isNaN(digito) ? 
-        digito === 'A' ? 11 : 10 : digito * 1;
-}
-
 const reiniciar = () => {
     inicializarJuego();
     puntosJugadores = puntosJugadores.map(puntos => 0);
@@ -54,7 +43,7 @@ const reiniciar = () => {
 }
 
 const acumularPuntos = (carta, turno) => {
-    puntosJugadores[turno] += valorCarta(carta);
+    puntosJugadores[turno] += valorCarta();
     smalls[turno].textContent = puntosJugadores[turno];
 }
 
@@ -87,7 +76,7 @@ const determinarGanador = () => {
 // Turno de la computadora
 const turnoComputadora = (puntosMinimos) => {
     do {
-        const carta = pedirCarta();
+        const carta = pedirCarta(deck);
         acumularPuntos(carta, puntosJugadores.length - 1);
 
         //Crear y configurar la carta en memoria para asignar en el DOM
@@ -100,7 +89,7 @@ const turnoComputadora = (puntosMinimos) => {
 
 // Eventos
 btnPedir.addEventListener('click', () => {
-    const carta = pedirCarta();
+    const carta = pedirCarta(deck);
     acumularPuntos(carta, 0);
 
     //Crear y configurar la carta en memoria para asignar en el DOM
