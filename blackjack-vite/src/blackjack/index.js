@@ -1,10 +1,6 @@
 import _ from 'underscore';
 import { crearDeck as crearNuevoDeck} from './usecases/crear-deck.js';
 
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
-
 let deck         = [];
 const tipos      = ['C', 'D', 'H', 'S'],
       especiales = ['A', 'J', 'Q', 'K'];
@@ -25,7 +21,7 @@ const divCartasJugadores = document.querySelectorAll('.divCartas'),
 
 // Esta función inicializa el juego
 const inicializarJuego = (numJugadores = 2) => {
-    deck = crearDeck();
+    deck = crearNuevoDeck(tipos, especiales);
     puntosJugadores = [];
     for(let i = 0; i < numJugadores; i++) {
         puntosJugadores.push(0);
