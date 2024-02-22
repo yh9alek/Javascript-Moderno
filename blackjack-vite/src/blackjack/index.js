@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { crearDeck as crearNuevoDeck, pedirCarta, acumularPuntos, turnoComputadora } from './usecases';
+import { crearDeck as crearNuevoDeck, crearCarta, pedirCarta, acumularPuntos, turnoComputadora } from './usecases';
 
 let deck         = [];
 const tipos      = ['C', 'D', 'H', 'S'],
@@ -40,33 +40,26 @@ const reiniciar = () => {
     btnNuevo.disabled = true;
 }
 
-const crearCarta = (carta, turno) => {
-    const imgCarta = document.createElement('img');
-    imgCarta.src = `assets/cartas/${carta}.png`;
-    imgCarta.classList.add('carta');
-    divCartasJugadores[turno].append(imgCarta);
-}
-
 // Eventos
 btnPedir.addEventListener('click', () => {
     const carta = pedirCarta(deck);
-    acumularPuntos(carta, 0);
+    acumularPuntos(carta, 0, puntosJugadores, smalls);
 
     //Crear y configurar la carta en memoria para asignar en el DOM
-    crearCarta(carta, 0);
+    crearCarta(carta, 0, divCartasJugadores);
 
     // Lógica de victoria - derrota
     if(puntosJugadores[0] >= 21) {
         btnPedir.disabled = true;
         btnDetener.disabled = true;
-        turnoComputadora(puntosJugadores, deck, btnNuevo, smalls);
+        turnoComputadora(puntosJugadores, deck, btnNuevo, smalls, divCartasJugadores);
     }
 });
 
 btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
     btnDetener.disabled = true;
-    turnoComputadora(puntosJugadores, deck, btnNuevo, smalls);
+    turnoComputadora(puntosJugadores, deck, btnNuevo, smalls, divCartasJugadores);
 });
 
 btnNuevo.addEventListener('click', () => {
