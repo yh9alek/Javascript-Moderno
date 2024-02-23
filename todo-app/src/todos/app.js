@@ -28,11 +28,20 @@ export const App = (elementId) => {
 
     // Referencias HTML
     const newDescriptionInput = document.querySelector(ElementIDs.NewTodoInput);
-    newDescriptionInput.addEventListener('keyup', (event) => {
+    const todoListUL = document.querySelector(ElementIDs.TodoList);
+
+    // Listeners
+    newDescriptionInput.addEventListener('keyup', event => {
         if(event.keyCode !== 13) return;
         if(!event.target.value.trim().length) return;
         todoStore.addTodo(event.target.value);
         displayTodos();
         event.target.value = '';
+    });
+
+    todoListUL.addEventListener('click', event => {
+        const element = event.target.closest('[data-id]');
+        todoStore.toggleTodo(element.getAttribute('data-id'));
+        displayTodos();
     });
 }
