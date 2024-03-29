@@ -17,7 +17,7 @@ export const UsersApp = async (element) => {
     renderaAddButton(element, () => { console.log('Desde el padre') });
     renderModal(element, async ( userLike ) => {
         const user = await saveUser(userLike);
-        usersStore.onUserChange(user);
+        usersStore.onUserChanged(user);
         renderTable();
     });
 }
