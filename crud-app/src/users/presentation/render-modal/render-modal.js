@@ -2,6 +2,7 @@ import html from './render-modal.html?raw';
 import './render-modal.css';
 import { User } from '../../models/user';
 import { getUserById } from '../../use-cases/get-user-by-id';
+import usersStore from '../../store/users-store';
 
 let modal, form;
 let loadedUser = {};

@@ -55,6 +55,5 @@ const updateUser = async (user) => {
     });
 
     const updatedUser = await res.json();
-    console.log({updatedUser});
-    return updateUser;
+    return updatedUser;
 }

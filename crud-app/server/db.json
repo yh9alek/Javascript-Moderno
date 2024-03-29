@@ -29,25 +29,16 @@
     },
     {
       "id": "4",
-      "isActive": false,
+      "isActive": true,
       "balance": 1601.54,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Henry",
-      "last_name": "Hunt",
+      "last_name": "Hunts",
       "gender": "male"
     },
     {
-      "id": "5",
-      "isActive": false,
-      "balance": 1455.08,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Mia",
-      "last_name": "Wade",
-      "gender": "female"
-    },
-    {
       "id": "6",
-      "isActive": false,
+      "isActive": true,
       "balance": 2950.3,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Tyler",
@@ -56,7 +47,7 @@
     },
     {
       "id": "7",
-      "isActive": false,
+      "isActive": true,
       "balance": 1985.59,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Harris",
@@ -65,11 +56,11 @@
     },
     {
       "id": "8",
-      "isActive": false,
+      "isActive": true,
       "balance": 2143.38,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Davis",
-      "last_name": "Bean",
+      "last_name": "Beans",
       "gender": "male"
     },
     {
@@ -187,60 +178,6 @@
       "avatar": "http://placehold.it/32x32",
       "first_name": "Hull",
       "last_name": "Love",
-      "gender": "male"
-    },
-    {
-      "id": "22",
-      "isActive": false,
-      "balance": 1463.99,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Frankie",
-      "last_name": "Hensley",
-      "gender": "female"
-    },
-    {
-      "id": "23",
-      "isActive": false,
-      "balance": 2028.55,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Padilla",
-      "last_name": "Kane",
-      "gender": "male"
-    },
-    {
-      "id": "24",
-      "isActive": true,
-      "balance": 2439.45,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Vazquez",
-      "last_name": "Burgess",
-      "gender": "male"
-    },
-    {
-      "id": "25",
-      "isActive": true,
-      "balance": 1435.38,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Shields",
-      "last_name": "Hudson",
-      "gender": "male"
-    },
-    {
-      "id": "26",
-      "isActive": true,
-      "balance": 3730.89,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Maureen",
-      "last_name": "Bentley",
-      "gender": "female"
-    },
-    {
-      "id": "27",
-      "isActive": true,
-      "balance": 3793.75,
-      "avatar": "http://placehold.it/32x32",
-      "first_name": "Nash",
-      "last_name": "Hart",
       "gender": "male"
     },
     {
