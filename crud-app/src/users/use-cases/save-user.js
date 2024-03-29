@@ -30,5 +30,6 @@ const createUser = async (user) => {
     });
 
     const newUser = await res.json();
+    console.log({newUser});
     return newUser;
 }
